@@ -13,6 +13,7 @@
             // Your Module 01 Skills code goes here
             // Delete the TaskDialog below and add your code
             TaskDialog.Show("Module 01 Skills", "Got Here! Now changing Let see - More changing");
+            TaskDialog.Show("Module 01 Skills", "Got Here! Now changing Let see - More changing1");
 
 
             return Result.Succeeded;

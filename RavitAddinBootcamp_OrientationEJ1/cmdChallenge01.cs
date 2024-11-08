@@ -1,4 +1,6 @@
-﻿namespace RavitAddinBootcamp_OrientationEJ1
+﻿using System.ComponentModel;
+
+namespace RavitAddinBootcamp_OrientationEJ1
 {
     [Transaction(TransactionMode.Manual)]
     public class cmdChallenge01 : IExternalCommand
@@ -10,10 +12,103 @@
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
 
+            Transaction t = new Transaction(doc);
+            t.Start("I'm doing something in Revit");
+
+
             // Your Module 01 Challenge code goes here
             // Delete the TaskDialog below and add your code
             TaskDialog.Show("Module 01 Challenge", "Coming Soon!- Lets see");
 
+            // declare my variables
+
+            int myVariable250 = 250;
+            int myStartingEleV = 0;
+            int myFloorHeight = 15;
+            double levelRemainder = 1;
+            int fizzCount = 0;
+            int buzzCount = 0;
+            int fizzBuzzCount = 0;
+
+
+            
+
+            for (int i=1; i<=250; i++)
+            {
+
+                //create a level with i
+                // create a transaction to lock the model
+               
+
+                // create a floor level 
+                Level newLevel = Level.Create(doc, i); 
+                newLevel.Name = "My new level" + i;   //******Need to add level value (thinking to convert i value to string
+
+                // check divisible
+
+                levelRemainder = i % 3;
+                if (levelRemainder == 0)
+                {
+                    //creat floor plan and name "FIZZ"
+                    fizzCount++;
+                    FilteredElementCollector collector1 = new FilteredElementCollector(doc);
+                    collector1.OfClass(typeof(ViewFamilyType));
+
+                    ViewFamilyType floorPlanVFT = null;
+                    foreach (ViewFamilyType curVFT in collector1)
+                    {
+                        if (curVFT.ViewFamily == ViewFamily.FloorPlan)
+                        {
+                            floorPlanVFT = curVFT;
+                        }
+                    }
+
+                    // create a floor plan view
+                    ViewPlan newFloorPlan = ViewPlan.Create(doc, floorPlanVFT.Id, newLevel.Id);
+                    newFloorPlan.Name = "FIZZ - " + fizzCount;
+
+                }
+
+
+                levelRemainder = i % 5;
+                if (levelRemainder == 0)
+                {
+                    //creat ceiling plan and name "BUZZ"
+
+                    // create a floor plan view
+                    buzzCount++;
+                    FilteredElementCollector collector1 = new FilteredElementCollector(doc);
+                    collector1.OfClass(typeof(ViewFamilyType));
+
+                    ViewFamilyType ceilingPlanVFT = null;
+                    foreach (ViewFamilyType curVFT in collector1)
+                    {
+                        if (curVFT.ViewFamily == ViewFamily.CeilingPlan)
+                        {
+                            ceilingPlanVFT = curVFT;
+                        }
+                    }
+
+                    // create a ceiling plan view
+                    ViewPlan newCeilingPlan = ViewPlan.Create(doc, ceilingPlanVFT.Id, newLevel.Id);
+                    newCeilingPlan.Name = "BUZZ - " + buzzCount;
+
+                }
+
+
+                
+                if ((i%3) == 0 && (i%5)==0)
+                {
+                    //creat sheet and name "FIZZBUZZ"
+
+                }
+
+
+
+            }
+
+            t.Commit();
+            t.Dispose();
 
             return Result.Succeeded;
         }

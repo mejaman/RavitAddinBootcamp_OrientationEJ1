@@ -8,6 +8,17 @@
     <VendorId>Revit Add-in Bootcamp</VendorId>
     <VendorDescription>Revit Add-in Bootcamp, https://academy.archsmarter.com</VendorDescription>
   </AddIn>
+
+	<AddIn Type="Command">
+		<Text>RAB BKUP file Delete</Text>
+		<Description>BKUP file Delete-Description</Description>
+		<Assembly>RavitAddinBootcamp_OrientationEJ1\RavitAddinBootcamp_OrientationEJ1.dll</Assembly>
+		<FullClassName>RavitAddinBootcamp_OrientationEJ1.cmdDeltBKU</FullClassName>
+		<ClientId>EC4C8193-E877-4736-B934-4FC95692CFA8</ClientId>		          
+		<VendorId>Revit Add-in Bootcamp</VendorId>
+		<VendorDescription>Revit Add-in Bootcamp, https://academy.archsmarter.com</VendorDescription>
+	</AddIn>
+
   <AddIn Type="Command">
     <Text>RAB Skills Module 01</Text>
     <Description>RAB Skills Module 01</Description>

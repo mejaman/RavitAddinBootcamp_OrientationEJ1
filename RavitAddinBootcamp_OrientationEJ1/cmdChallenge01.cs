@@ -26,7 +26,7 @@ namespace RavitAddinBootcamp_OrientationEJ1
             int myVariable250 = 250;
             int myStartingEleV = 0;
             int myFloorHeight = 15;
-            double levelRemainder = 1;
+           // double levelRemainder = 1;
             int fizzCount = 0;
             int buzzCount = 0;
             int fizzBuzzCount = 0;
@@ -90,6 +90,7 @@ namespace RavitAddinBootcamp_OrientationEJ1
                     newSheet.Name = "FIZZBUZZ_" + fizzBuzzCount;
                     newSheet.SheetNumber = "A10" + fizzBuzzCount;
 
+                    //Bonus
                     // create a viewport
                     // first create a point
                     XYZ insPoint = new XYZ();
